@@ -1,5 +1,4 @@
 function reverseLinkedList(list) {
-  debugger;
   let prev = null;
   let current = list.head;
   let temp;
@@ -8,11 +7,46 @@ function reverseLinkedList(list) {
   head.tail = current;
 
   while (current) {
-    debugger;
     temp = current.next;
     current.next = prev;
     prev = current;
     current = temp;
+  }
+
+  return head;
+}
+
+function reverseLinkedList(list) {
+  let previous = null;
+  let current = list.head;
+
+  const head = list.tail;
+  head.tail = list.head;
+
+  while (current) {
+    const detachedNodePointer = current.next;
+    current.next = previous;
+
+    previous = current;
+    current = detachedNodePointer;
+  }
+
+  return head;
+}
+
+function reverseLinkedList(list) {
+  let previous = null;
+  let current = list.head;
+
+  const head = list.tail;
+  head.tail = list.head;
+
+  while (current) {
+    const detachedNodePointer = current.next;
+    current.next = previous;
+
+    previous = current;
+    current = detachedNodePointer;
   }
 
   return head;
