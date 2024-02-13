@@ -16,3 +16,24 @@ function findLength(nums, k) {
 
   return ans;
 }
+
+function findAchievableLength(s) {
+  let left = 0,
+    curr = 0,
+    ans = 0;
+
+  for (right in s) {
+    if (s[right] === "0") {
+      curr++;
+    }
+
+    while (curr > 1) {
+      if (s[left] === "0") curr--;
+      left++;
+    }
+
+    ans = Math.max(ans, right - left + 1);
+  }
+
+  return ans;
+}
