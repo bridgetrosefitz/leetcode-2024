@@ -29,4 +29,21 @@ const binarySearchToReturnLeftmostTarget = (arr, target) => {
       left = mid + 1; // once we have moved one step further left than the target, return the element to the right (which will be the first occurrenc of the target)
     }
   }
+
+  return left;
+};
+
+const binarySearchToReturnRightmostTarget = (arr, target) => {
+  let left = 0;
+  let right = arr.length;
+  while (left < right) {
+    let mid = Math.floor((left + right) / 2);
+    if (arr[mid] > target) {
+      right = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+
+  return left;
 };
