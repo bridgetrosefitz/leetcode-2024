@@ -16,7 +16,7 @@ const numberOfWaysToClimbStairs = function (n) {
 
 // bottom up
 
-const numberOfWaysToClimnStairs2 = function (n) {
+const numberOfWaysToClimbStairs2 = function (n) {
   if (n === 1) return 1;
 
   const dp = new Array(n + 1).fill(0);
