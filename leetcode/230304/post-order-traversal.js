@@ -1,3 +1,4 @@
+// ITERATIVE
 var postorderTraversal = function (root) {
   if (!root) return [];
 
@@ -30,4 +31,19 @@ var postorderTraversal = function (root) {
   }
 
   return result;
+};
+
+// ITERATIVE
+
+var postorderTraversal = function (root) {
+  const res = [];
+  traverse(root);
+  return res;
+
+  function traverse(node) {
+    if (!node) return;
+    traverse(node.left);
+    traverse(node.right);
+    res.push(node.val);
+  }
 };
