@@ -1,0 +1,47 @@
+button {
+  cursor: pointer;
+}
+
+.clickable-panel {
+  height: 100%;
+  width: 20%;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#right-panel {
+  right: 0;
+  justify-content: right;
+}
+
+#left-panel {
+  left: 0;
+  justify-content: left;
+}
+
+#carousel-container {
+  position: relative;
+  outline: 1px solid purple;
+  height: 200px;
+  width: fit-content;
+}
+
+#carousel-container img {
+  height: 100%;
+}
+
+#right-panel button,
+#left-panel button {
+  all: unset;
+  background-color: white;
+  opacity: 50%;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+}

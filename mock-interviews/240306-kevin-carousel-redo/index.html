@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="carousel-container">
+      <img />
+      <div id="left-panel" class="clickable-panel">
+        <button id="back"><</button>
+      </div>
+      <div id="right-panel" class="clickable-panel">
+        <button id="forward">></button>
+      </div>
+      <!-- <div style="background-color: pink; width: 20px; height: 10px"></div>
+      <div style="background-color: red; width: 20px; height: 10px"></div>
+      <div style="background-color: blue; width: 20px; height: 10px"></div> -->
+    </div>
+    <script>
+      ///////////// TO DO //////////////
+
+      // DONE Make left and right clickable panels
+      // Make transition
+      // Style buttons
+
+      const carouselContainer = document.querySelector("#carousel-container");
+      const imageEl = carouselContainer.querySelector("img");
+
+      const images = [
+        "./images/image-1.png",
+        "./images/image-2.png",
+        "./images/image-3.png",
+        "./images/image-4.png",
+      ];
+
+      //////////////////////
+      const goForward = () => {
+        if (current === images.length - 1) {
+          current = 0;
+        } else {
+          current++;
+        }
+      };
+
+      const goBack = () => {
+        if (current === 0) {
+          current = images.length - 1;
+        } else {
+          current--;
+        }
+      };
+
+      ///////////////////
+      let current = 0;
+      imageEl.src = images[current];
+
+      carouselContainer.addEventListener("click", e => {
+        if (e.target.closest("#left-panel")) goForward();
+        if (e.target.closest("#right-panel")) goBack();
+        imageEl.src = images[current];
+      });
+    </script>
+  </body>
+</html>

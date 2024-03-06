@@ -1,0 +1,18 @@
+- Container
+  - Event listener: click
+- Section
+  - Header
+  - Text
+  - Arrow
+  - Whole header is clickable
+  - ID
+  - CSS class
+    - open
+    - animation
+- Detail
+  - Text
+  - Scroll
+- Helper functions
+  - Open
+  - Closed
+- Dummy data

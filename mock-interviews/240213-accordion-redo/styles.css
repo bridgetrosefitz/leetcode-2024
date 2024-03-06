@@ -1,0 +1,25 @@
+.accordion {
+  outline: 1px solid black;
+  /* some nice gradient border */
+}
+
+.accordion-section p {
+  visibility: hidden;
+  transition: "ease 0.5s";
+}
+
+.accordion-section.closed p {
+  visibility: visible;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  outline: 1px solid black;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.accordion-body {
+  padding: 1rem;
+}

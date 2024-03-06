@@ -8,4 +8,6 @@ const reverse = function (head) {
     prev = curr;
     curr = temp;
   }
+
+  return prev;
 };
