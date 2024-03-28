@@ -18,15 +18,36 @@ class Graph {
     // const v2List = this.adjacencyList[vertex2];
     // v2List.splice(v2List.indexOf(vertex1), 1);
 
-    this.adjacencyList[vertex1].filter(v => v !== v2);
-    this.adjacencyList[vertex2].filter(v => v !== v1);
+    debugger;
+    this.adjacencyList[vertex1].filter(v => v !== vertex2);
+    this.adjacencyList[vertex2].filter(v => v !== vertex1);
   }
 
   removeVertex(vertex) {
-    for (v in this.adjacencyList) {
-      v.filter(pair => pair !== vertex);
-    }
+    // for (v in this.adjacencyList) {
+    //   v.filter(pair => pair !== vertex);
+    // }
 
+    while (this.adjacencyList[vertex].length) {
+      const pair = this.adjacencyList[vertex].pop();
+      this.removeEdge(vertex, pair);
+    }
     delete this.adjacencyList.vertex;
+  }
+
+  dfsRecursive(vertex) {
+    const res = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList(function dfs(vertex) {
+      if (!vertex) return null;
+      visited[vertex] = true;
+      res.push(vertex);
+
+      adjacencyList[vertex].forEach(neighbor => {
+        if (!visited[neighbor]) return dfs(neighbor);
+      });
+    })(vertex);
+
+    return result;
   }
 }
