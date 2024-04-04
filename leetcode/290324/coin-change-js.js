@@ -6,7 +6,6 @@ var coinChange = function (coins, amount) {
   let c = 0;
   // state variable = remainder
   function dfs(rem) {
-    c += 1;
     // base cases
     if (rem === 0) {
       return 0;
@@ -32,7 +31,6 @@ var coinChange = function (coins, amount) {
   }
 
   const result = dfs(amount);
-  console.log(c);
   return result === Infinity ? -1 : result;
 };
 
