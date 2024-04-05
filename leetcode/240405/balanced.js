@@ -13,29 +13,20 @@
  * @return {boolean}
  */
 var isBalanced = function (root) {
-  // minLevel
-  // maxLevel
-  // dfs function (node, level)
-  // am I a leaf node
-  // is my level smaller than min?
-  // update minLevel
-  // is my level larger than max?
-  // update maxLevel
-  // return
-  // else
-  // recurse on left (level + 1)
-  // recurse on right (level + 1)
-  // call dfs(root, 0)
-  // if diff min and max > 2
-  // return false
-  // else
-  // return true
+  let treeIsBalanced = true;
+  // base cases
+  // if node is null > return 0
+  // is dfs from my left node the same as my right node?
+  function dfs(node) {
+    if (!node) return 0;
+    const leftDepth = dfs(node.left) + 1;
+    const rightDepth = dfs(node.right) + 1;
+
+    if (Math.abs(leftDepth - rightDepth) > 1) treeIsBalanced = false;
+    return Math.max(leftDepth, rightDepth);
+  }
+
+  dfs(root);
+
+  return treeIsBalanced;
 };
-
-// Example 1
-// Input: root = [3,9,20,null,null,15,7]
-// Output: true
-
-// Example 2
-// Input: root = [1,2,2,3,3,null,null,4,4]
-// Output: false
