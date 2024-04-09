@@ -10,6 +10,8 @@ function reverse(head) {
     curr = temp;
   }
 
+  return prev;
+
   // 1 - 2 - 3 - 4
   // P   C   T
 
