@@ -64,7 +64,12 @@ class Graph {
       if (!visited[curr]) {
         visited[curr] = true;
         res.push(curr);
-        adjacencyList[curr].forEach(neighbor => stack.push(neighbor));
+        adjacencyList[curr].forEach(neighbor => {
+          if (!visited[neighbor]) {
+            visited[neighbor] = true;
+            stack.push(neighbor);
+          }
+        });
       }
     }
 
