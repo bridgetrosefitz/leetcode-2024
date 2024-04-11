@@ -75,4 +75,24 @@ class Graph {
 
     return res;
   }
+
+  bfs(start) {
+    const queue = [start];
+    const res = [];
+    const visited = { start: true };
+
+    while (queue.length) {
+      const curr = queue.shift();
+      res.push(curr);
+
+      this.adjacencyList(curr).forEach(neighbor => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
+    }
+
+    return res;
+  }
 }
