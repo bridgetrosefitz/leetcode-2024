@@ -52,4 +52,22 @@ class Graph {
 
     return result;
   }
+
+  dfsIterative(vertex) {
+    const res = [];
+    const stack = [vertex];
+    const visited = { vertex: true };
+    const adjacencyList = this.adjacencyList;
+
+    while (stack.length) {
+      const curr = stack.pop();
+      if (!visited[curr]) {
+        visited[curr] = true;
+        res.push(curr);
+        adjacencyList[curr].forEach(neighbor => stack.push(neighbor));
+      }
+    }
+
+    return res;
+  }
 }
