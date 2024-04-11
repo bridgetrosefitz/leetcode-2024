@@ -38,7 +38,9 @@ class Graph {
   dfsRecursive(vertex) {
     const res = [];
     const visited = {};
-    const adjacencyList = this.adjacencyList(function dfs(vertex) {
+    const adjacencyList = this.adjacencyList;
+
+    (function dfs(vertex) {
       if (!vertex) return null;
       visited[vertex] = true;
       res.push(vertex);
