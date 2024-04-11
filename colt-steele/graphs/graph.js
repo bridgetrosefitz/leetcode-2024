@@ -85,6 +85,8 @@ class Graph {
       const curr = queue.shift();
       res.push(curr);
 
+      // TO REVERSE THE ORDER: this.adjacencyList(curr).slice().reverse().forEach(neighbor => {
+
       this.adjacencyList(curr).forEach(neighbor => {
         if (!visited[neighbor]) {
           visited[neighbor] = true;
