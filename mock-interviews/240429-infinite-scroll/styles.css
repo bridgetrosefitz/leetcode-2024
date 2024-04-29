@@ -1,0 +1,7 @@
+.pokemon-square {
+  display: flex;
+}
+
+#pokemon-container {
+  overflow: hidden;
+}
