@@ -14,9 +14,12 @@ function fetchPokemon(offset, limit) {
 }
 
 function appendPokemonSquares(pokemonData, container) {
+  // debugger;
   pokemonData.forEach(
     pokemon =>
-      (container.innerHTML += `<div class="pokemon-square">${pokemon.name}</div>`)
+      (container.innerHTML += `<div class="pokemon-square">${
+        pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+      }</div>`)
   );
 }
 
