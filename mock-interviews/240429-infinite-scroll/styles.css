@@ -1,9 +1,21 @@
 .pokemon-square {
-  display: flex;
-  border: 1px solid red;
+  text-align: center;
+  align-content: center;
+  background-color: darkgrey;
+  margin: 20px;
+  padding: 20px;
+  min-width: 15rem;
+  min-height: 15rem;
 }
 
 #pokemon-container {
   overflow: hidden;
-  border: 1px solid blue;
+  background-color: lightgrey;
+  min-height: 100vh;
+  width: 20rem;
+}
+
+#container-positioning-context {
+  display: flex;
+  justify-content: space-around;
 }
