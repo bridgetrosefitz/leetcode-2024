@@ -14,14 +14,10 @@ function fetchPokemon(offset, limit) {
 }
 
 function appendPokemonSquares(pokemonData, container) {
-  const squares = pokemonData.map(
+  pokemonData.forEach(
     pokemon =>
-      `<div class=”pokemon-square”>
-${pokemon.name}
-</div>`
+      (container.innerHTML += `<div class="pokemon-square">${pokemon.name}</div>`)
   );
-
-  container.innerHtml += squares;
 }
 
 pokemonContainer.addEventListener("scroll", e => {

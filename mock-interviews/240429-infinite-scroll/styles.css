@@ -1,7 +1,9 @@
 .pokemon-square {
   display: flex;
+  border: 1px solid red;
 }
 
 #pokemon-container {
   overflow: hidden;
+  border: 1px solid blue;
 }
