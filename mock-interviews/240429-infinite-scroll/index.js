@@ -23,10 +23,19 @@ function appendPokemonSquares(pokemonData, container) {
   );
 }
 
-pokemonContainer.addEventListener("scroll", e => {
-  const { scrollHeight, scrollTop, clientHeight } = e.target;
+document.addEventListener("scroll", e => {
+  console.log("event");
+  debugger;
+  // const { scrollHeight, scrollTop, clientHeight } = e.target;
+  const scrollHeight = pokemonContainer.scrollHeight;
+  const scrollTop = pokemonContainer.scrollTop;
+
+  console.log("scrollHeight", scrollHeight);
+  console.log("scrollTop", scrollTop);
+  console.log("clientHeight", clientHeight);
 
   if (scrollHeight - scrollTop - clientHeight === 0) {
+    console.log("is at bottom");
     fetchPokemon(latestPokemon, 20).then(pokemon =>
       appendPokemonSquares(pokemon, pokemonContainer)
     );
