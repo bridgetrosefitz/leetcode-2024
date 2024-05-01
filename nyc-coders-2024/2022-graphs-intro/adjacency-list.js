@@ -27,15 +27,22 @@ class AdjacencyList {
   }
 
   removeVertex(v) {
-    if (!this.list[v]) return true;
-
-    this.list[v].forEach(adjacency => {
-      this.list[adjacency].filter(a => a !== v);
-    });
+    while (this.list[v].length) {
+      const neighbor = this.list[v].pop();
+      this.removeEdge(v, neighbor);
+    }
 
     delete this.list[v];
+    // if (!this.list[v]) return true;
 
-    return true;
+    // this.list[v].forEach(adjacency => {
+    //   this.list[adjacency].filter(a => a !== v);
+    // });
+
+    // delete this.list[v];
+
+    // return true;
+
     // if v doesn't exist in list, return true
     // go through every adjacency in v's key
     // filter list at adjacency to remove v
