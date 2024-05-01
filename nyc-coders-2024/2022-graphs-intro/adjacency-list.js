@@ -57,8 +57,8 @@ class AdjacencyList {
     if (!this.list[v1] || !this.list[v2]) {
       throw new Error("One or both nodes do not exist");
     }
-    thislist[v1].filter(adjacency => adjacency !== v2);
-    thislist[v2].filter(adjacency => adjacency !== v1);
+    this.list[v1] = thislist[v1].filter(adjacency => adjacency !== v2);
+    this.list[v2] = thislist[v2].filter(adjacency => adjacency !== v1);
   }
 }
 
