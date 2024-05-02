@@ -21,7 +21,7 @@ function Node(key) {
 }
 
 function findInorderSuccessor(inputNode) {
-  // 25
+  // 20
   let curr = inputNode.right; // null
 
   while (curr) {
@@ -29,13 +29,13 @@ function findInorderSuccessor(inputNode) {
     curr = curr.left;
   }
 
-  curr = inputNode.parent; //20
+  curr = inputNode.parent; // null
 
   while (curr && curr.val < inputNode.val) {
-    curr = curr.parent; // null
+    curr = curr.parent; // 20
   }
 
-  return curr; // null
+  return curr; //
 }
 
 // worst case (given input node at bottom),
