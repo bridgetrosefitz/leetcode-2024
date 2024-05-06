@@ -12,7 +12,6 @@ body {
   bottom: 0;
   left: 0;
   transition: height 200ms;
-  /* visibility: hidden; */
   background-color: lightgrey;
 }
 
@@ -35,7 +34,3 @@ body {
 .display-none {
   display: none;
 }
-
-/* .display-initial {
-  display: initial;
-} */
