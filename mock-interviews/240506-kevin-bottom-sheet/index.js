@@ -4,7 +4,6 @@ const expandButton = document.querySelector("#expand");
 const closeButton = document.querySelector("#close");
 const shrinkButton = document.querySelector("#shrink");
 
-// add "shrink" button when expanded
 // make styling pretty
 
 function fullyOpenBottomSheet() {

@@ -1,5 +1,6 @@
 body {
   /* box-sizing: border-box; */
+  font-family: arial;
 }
 
 #main-page-content {
@@ -13,6 +14,12 @@ body {
   left: 0;
   transition: height 200ms;
   background-color: lightgrey;
+}
+
+button {
+  border: none;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
 }
 
 #bottom-sheet-contents {
