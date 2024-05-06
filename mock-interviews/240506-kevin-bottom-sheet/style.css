@@ -1,0 +1,21 @@
+#main-page-content {
+  height: 100%;
+}
+
+#bottom-sheet-container {
+  position: fixed;
+  bottom: 0;
+  transition: height 200ms;
+}
+
+.closed {
+  height: 0%;
+}
+
+.fully-open {
+  height: 100%;
+}
+
+.partially-open {
+  height: 30%;
+}
