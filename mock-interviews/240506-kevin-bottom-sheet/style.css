@@ -1,11 +1,23 @@
+body {
+  /* box-sizing: border-box; */
+}
+
 #main-page-content {
   height: 100%;
 }
 
 #bottom-sheet-container {
+  width: 100vw;
   position: fixed;
   bottom: 0;
+  left: 0;
   transition: height 200ms;
+  /* visibility: hidden; */
+  background-color: lightgrey;
+}
+
+#bottom-sheet-contents {
+  padding: 10px;
 }
 
 .closed {
@@ -19,3 +31,11 @@
 .partially-open {
   height: 30%;
 }
+
+.display-none {
+  display: none;
+}
+
+/* .display-initial {
+  display: initial;
+} */

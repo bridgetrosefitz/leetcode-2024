@@ -1,7 +1,11 @@
 const bottomSheet = document.querySelector("#bottom-sheet-container");
 const openButton = document.querySelector("#open");
-const partiallyOpenButton = document.querySelector("#expand");
+const expandButton = document.querySelector("#expand");
 const closeButton = document.querySelector("#close");
+const shrinkButton = document.querySelector("#shrink");
+
+// add "shrink" button when expanded
+// make styling pretty
 
 function fullyOpenBottomSheet() {
   if (bottomSheet.classList.contains("closed")) {
@@ -13,6 +17,9 @@ function fullyOpenBottomSheet() {
   }
 
   bottomSheet.classList.add("fully-open");
+  shrinkButton.classList.remove("display-none");
+  // shrinkButton.classList.add("display-initial");
+  expandButton.classList.add("display-none");
 }
 
 function partiallyOpenBottomSheet() {
@@ -24,6 +31,8 @@ function partiallyOpenBottomSheet() {
   }
 
   bottomSheet.classList.add("partially-open");
+  shrinkButton.classList.add("display-none");
+  expandButton.classList.remove("display-none");
 }
 
 function closeBottomSheet() {
@@ -42,10 +51,14 @@ closeButton.addEventListener("click", () => {
   closeBottomSheet();
 });
 
-partiallyOpenButton.addEventListener("click", () => {
+expandButton.addEventListener("click", () => {
   fullyOpenBottomSheet();
 });
 
 openButton.addEventListener("click", () => {
+  partiallyOpenBottomSheet();
+});
+
+shrinkButton.addEventListener("click", () => {
   partiallyOpenBottomSheet();
 });
