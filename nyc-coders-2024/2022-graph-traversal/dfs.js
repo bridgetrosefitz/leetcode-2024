@@ -1,5 +1,5 @@
 // Function signature: 
-function dfsIterative(vertex, graph, visited = new Set()) {
+function dfsIterative(vertex, graph) {
   const visited = new Set()
   const stack = []
   stack.push(vertex)
