@@ -8,7 +8,7 @@ function getNumberOfIslands(binaryMatrix) {
 
     if (cell === 0) return;
 
-    binaryMatrix[x][y] = 0; // Why do we do this?
+    binaryMatrix[x][y] = 0;
 
     dfs(x + 1, y);
     dfs(x - 1, y);
@@ -29,6 +29,5 @@ function getNumberOfIslands(binaryMatrix) {
 }
 
 function isInvalidCell(x, y, matrix) {
-  if (x < 0 || y < 0 || x > matrix.length - 1 || x > matrix[0].length - 1) {
-  }
+  return x < 0 || y < 0 || x > matrix.length - 1 || y > matrix[0].length - 1;
 }
