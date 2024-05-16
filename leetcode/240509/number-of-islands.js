@@ -1,19 +1,18 @@
 /**
- * @param {character[][]} grid
+ * @param {character[][]} binaryMatrix
  * @return {number}
  */
+
+// THIS HAS A BUG - RETURNING 12 instead of 6 on
+
+// getNumberOfIslands([ [0,    1,    0,    1,    0],
+//                          [0,    0,    1,    1,    1],
+//                          [1,    0,    0,    1,    0],
+//                          [0,    1,    1,    0,    0],
+//                          [1,    0,    1,    0,    1] ]
 var numIslands = function (grid) {
-  // to count a new island:
-  // you find a 1 which is not connected to any previous 1s we've seen
-
-  // traverse every cell
-  // traverse up/down/left/right of that cell
-  // if cell is a 1 and if we have not already visited
-  // add cell to queue
-  // add cell to visited
-
-  const rows = grid.length;
-  const cols = grid[0].length;
+  const rows = binaryMatrix.length;
+  const cols = binaryMatrix[0].length;
 
   const visited = new Set();
   let islands = 0;
@@ -40,9 +39,9 @@ var numIslands = function (grid) {
         const newC = currCol + dC;
         const newCellId = `${newR}-${newC}`;
         if (
-          isValidCell(newR, newC, grid) &&
+          isValidCell(newR, newC, binaryMatrix) &&
           !visited.has(newCellId) &&
-          grid[newR][newC] === "1"
+          binaryMatrix[newR][newC] === "1"
         ) {
           q.enqueue(newCellId);
           visited.add(newCellId);
@@ -54,7 +53,7 @@ var numIslands = function (grid) {
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       const cellId = `${row}-${col}`;
-      if (grid[row][col] === "1" && !visited.has(cellId)) {
+      if (binaryMatrix[row][col] === "1" && !visited.has(cellId)) {
         bfs(row, col);
         islands++;
       }

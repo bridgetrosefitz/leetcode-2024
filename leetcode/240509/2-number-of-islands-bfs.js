@@ -1,4 +1,4 @@
-// THIS MAY HAVE A BUG
+// THIS HAS A BUG
 function numberOfIslands(grid) {
   const rows = grid.length;
   const cols = grid[0].length;
