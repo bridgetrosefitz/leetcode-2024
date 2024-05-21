@@ -43,12 +43,18 @@ function populateCalendarSquares() {
   }
 
   let html = ``;
-  dateList.forEach(
-    date =>
-      (html += `<div data-date=${date.fullDate.toISOString()} >${
-        date.dateNumber
-      }</div>`)
-  );
+  let currWeek = ``;
+
+  dateList.forEach((date, index) => {
+    currWeek += `<div data-date=${date.fullDate.toISOString()} >${
+      date.dateNumber
+    }</div>`;
+
+    if (date.fullDate.getDay() % 7 === 0 || index === dateList.length - 1) {
+      html += `<div class="calendar-week">${currWeek}</div>`;
+      currWeek = ``;
+    }
+  });
 
   return html;
 }
@@ -72,9 +78,8 @@ calendarToggleButton.addEventListener("click", () => {
 // Event listener on cal container
 // LATER: On third click, make it start date and clear prev start and end
 
-calendarContainer.addEventListener("click", () => {
-  // GET TARGET
-  // RUN POPULATE METHOD
+calendarContainer.addEventListener("click", e => {
+  populateStartDate(e.target);
 });
 
 function populateStartDate(target) {
