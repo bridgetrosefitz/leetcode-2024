@@ -5,7 +5,10 @@ const today = new Date();
 const calendar = `<div id="calendar-skeleton">
 <div id="calendar-header">
 <button id="back-month" class="calendar-month-arrow"><</button>
-<p>${today.toLocaleString("month-year", { length: short })}</p>
+<p>${today.toLocaleString("en-GB", {
+  day: "numeric",
+  month: "short",
+})}</p>
 <button id="forward-month" class="calendar-month-arrow">></button>
 </div>
 <div id="days-of-week">
@@ -16,29 +19,43 @@ const calendar = `<div id="calendar-skeleton">
 <p>Fri</p>
 <p>Sat</p>
 <p>Sun</p>
-<div id="calendar-squares">${populateCalendarSquares()}</div>
 </div>
-
-}
+<div id="calendar-squares">${populateCalendarSquares()}</div>
 </div>`;
 
 function populateCalendarSquares() {
-  const currDay = today; // CHECK HOW TO GET FIRST DAY OF CURRENT MONTH
+  let currDay = new Date(today.getFullYear(), today.getMonth(), 1);
   const dateList = [];
+  let currMonth = currDay.getMonth();
+  let todayMonth = today.getMonth();
 
-  while (currDay.getMonth() === today.getMonth()) {
-    dateList.push(currDay);
-    currDay = currDay + 1; // CHECK HOW TO GET NEXT DAY
+  while (currMonth === todayMonth) {
+    dateList.push({
+      fullDate: new Date(
+        currDay.getFullYear(),
+        currDay.getMonth(),
+        currDay.getDate()
+      ),
+      dateNumber: currDay.getDate(),
+    });
+    currDay.setDate(currDay.getDate() + 1);
+    currMonth = currDay.getMonth();
   }
 
-  return dateList.map(
-    date => `<div data-date=${JSON.stringify(date)} >date.getDay() w</div>` // CHECK HOW TO GET DATE NUMBER
+  let html = ``;
+  dateList.forEach(
+    date =>
+      (html += `<div data-date=${date.fullDate.toISOString()} >${
+        date.dateNumber
+      }</div>`)
   );
+
+  return html;
 }
 
-BUTTOOOOON.addEventListener("click", () => {
+calendarToggleButton.addEventListener("click", () => {
   // ADD TOGGLE LOGIC
-  calendarContainer.innerHtml = calendar;
+  calendarContainer.innerHTML = calendar;
 });
 
 // If both are null, populate start date
