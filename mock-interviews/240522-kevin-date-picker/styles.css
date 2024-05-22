@@ -12,6 +12,11 @@
   border-radius: 20;
 }
 
+#start-end-container {
+  display: flex;
+  gap: 10px;
+}
+
 #calendar-container {
   max-width: 30%;
 }

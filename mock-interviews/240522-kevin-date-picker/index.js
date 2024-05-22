@@ -1,6 +1,9 @@
 const calendarToggleButton = document.querySelector("#open-calendar-button");
 const calendarContainer = document.querySelector("#calendar-container");
 const today = new Date();
+const startEndContainer = document.querySelector("#start-end-container");
+const startDateEl = startEndContainer.querySelector("#start-date");
+const endDateEl = startEndContainer.querySelector("#end-date");
 
 const calendar = `<div id="calendar">
 <div id="calendar-header">
@@ -80,5 +83,5 @@ calendarContainer.addEventListener("click", e => {
 
 function populateStartDate(target) {
   target.classList.add("selected-date");
-  startDate = new Date(target.data.date);
+  startDateEl.textContent = new Date(target.dataset.date).toLocaleDateString();
 }
