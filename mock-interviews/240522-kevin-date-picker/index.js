@@ -2,12 +2,12 @@ const calendarToggleButton = document.querySelector("#open-calendar-button");
 const calendarContainer = document.querySelector("#calendar-container");
 const today = new Date();
 
-const calendar = `<div id="calendar-skeleton">
+const calendar = `<div id="calendar">
 <div id="calendar-header">
 <button id="back-month" class="calendar-month-arrow"><</button>
 <p>${today.toLocaleString("en-GB", {
-  day: "numeric",
   month: "short",
+  year: "numeric",
 })}</p>
 <button id="forward-month" class="calendar-month-arrow">></button>
 </div>
@@ -20,40 +20,35 @@ const calendar = `<div id="calendar-skeleton">
 <p>Sat</p>
 <p>Sun</p>
 </div>
-<div id="calendar-squares">${populateCalendarSquares()}</div>
-</div>`;
+</div>
+<div id="calendar-squares">${populateCalendarSquares()}</div>`;
 
 function populateCalendarSquares() {
   let currDay = new Date(today.getFullYear(), today.getMonth(), 1);
   const dateList = [];
   let currMonth = currDay.getMonth();
   let todayMonth = today.getMonth();
+  const weekdayOfFirstOfMonth = currDay.getDay();
+
+  for (let i = 0; i < weekdayOfFirstOfMonth - 1; i++) {
+    dateList.push(null);
+  }
 
   while (currMonth === todayMonth) {
-    dateList.push({
-      fullDate: new Date(
-        currDay.getFullYear(),
-        currDay.getMonth(),
-        currDay.getDate()
-      ),
-      dateNumber: currDay.getDate(),
-    });
+    dateList.push(
+      new Date(currDay.getFullYear(), currDay.getMonth(), currDay.getDate())
+    );
     currDay.setDate(currDay.getDate() + 1);
     currMonth = currDay.getMonth();
   }
 
   let html = ``;
-  let currWeek = ``;
 
-  dateList.forEach((date, index) => {
-    currWeek += `<div data-date=${date.fullDate.toISOString()} >${
-      date.dateNumber
-    }</div>`;
+  dateList.forEach(date => {
+    const dataAttribute = date ? date.toISOString() : "placeholder-day";
 
-    if (date.fullDate.getDay() % 7 === 0 || index === dateList.length - 1) {
-      html += `<div class="calendar-week">${currWeek}</div>`;
-      currWeek = ``;
-    }
+    const display = date ? date.getDate() : "";
+    html += `<div data-date=${dataAttribute} >${display}</div>`;
   });
 
   return html;
