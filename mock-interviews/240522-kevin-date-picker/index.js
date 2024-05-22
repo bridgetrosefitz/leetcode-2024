@@ -30,6 +30,7 @@ function populateCalendarSquares() {
   let todayMonth = today.getMonth();
   const weekdayOfFirstOfMonth = currDay.getDay();
 
+  // IS THERE A LESS HACKY WAY TO DO THIS
   for (let i = 0; i < weekdayOfFirstOfMonth - 1; i++) {
     dateList.push(null);
   }
@@ -48,7 +49,7 @@ function populateCalendarSquares() {
     const dataAttribute = date ? date.toISOString() : "placeholder-day";
 
     const display = date ? date.getDate() : "";
-    html += `<div data-date=${dataAttribute} >${display}</div>`;
+    html += `<div class="day-of-month" data-date=${dataAttribute} >${display}</div>`;
   });
 
   return html;
