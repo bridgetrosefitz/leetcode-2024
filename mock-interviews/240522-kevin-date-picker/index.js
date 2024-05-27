@@ -77,11 +77,13 @@ calendarToggleButton.addEventListener("click", () => {
 // Event listener on cal container
 // LATER: On third click, make it start date and clear prev start and end
 
-calendarContainer.addEventListener("click", e => {
-  populateStartDate(e.target);
+calendarContainer.addEventListener("click", ({ target }) => {
+  if (target.classList.contains("day-of-month")) {
+    populateStartDate(target);
+  }
 });
 
-function populateStartDate(target) {
-  target.classList.add("selected-date");
-  startDateEl.textContent = new Date(target.dataset.date).toLocaleDateString();
+function populateStartDate(element) {
+  element.classList.add("selected-date");
+  startDateEl.textContent = new Date(element.dataset.date).toLocaleDateString();
 }
