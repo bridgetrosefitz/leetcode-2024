@@ -65,25 +65,54 @@ calendarToggleButton.addEventListener("click", () => {
 
 // If both are null, populate start date
 // If end date is null, populate end date
-// Method to populateStartDate
-// Add class to start date calendar square
-// Update startDateVariable
-// Update start date display block
+// DONE Method to populateStartDate
+// DONE Add class to start date calendar square
+// DONE Update start date display block
 // Method to populateEndDate
-// Add class to end date calendar square
 // Add class to every square between start date and end date
-// Update endDateVariable
 // Update end date display block
 // Event listener on cal container
 // LATER: On third click, make it start date and clear prev start and end
 
 calendarContainer.addEventListener("click", ({ target }) => {
   if (target.classList.contains("day-of-month")) {
-    populateStartDate(target);
+    if (!startDate.value && !endDate.value) {
+      populateStartDate(target);
+    } else if (!endDate.value) {
+      populateEndDate(target);
+    } else {
+      // clearDates()
+      // cleanup display of cal in clearDates
+      // startDate.value = null;
+      // endDate.value = null;
+    }
   }
 });
 
+function populateEndDate() {
+  console.log("i love eating Kevs poop straight out of his butt");
+}
+
 function populateStartDate(element) {
   element.classList.add("selected-date");
-  startDateEl.textContent = new Date(element.dataset.date).toLocaleDateString();
+  startDate.value = new Date(element.dataset.date);
 }
+
+const startDateHandler = {
+  set(target, property, newValue) {
+    target[property] = newValue;
+    startDateEl.textContent = newValue.toLocaleDateString();
+    return true;
+  },
+};
+
+const endDateHandler = {
+  set(target, property, newValue) {
+    target[property] = newValue;
+    endDateEl.textContent = newValue.toLocaleDateString();
+    return true;
+  },
+};
+
+let startDate = new Proxy({ value: null }, startDateHandler);
+let endDate = new Proxy({ value: null }, endDateHandler);
