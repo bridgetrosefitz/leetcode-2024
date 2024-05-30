@@ -3,7 +3,7 @@ function combinations(nums, k) {
   const temp = [];
 
   function backtrack(start) {
-    if (temp.length === k - 1) ans.push([...temp]);
+    if (temp.length === k) ans.push([...temp]);
 
     for (let i = start; i < nums.length; i++) {
       temp.push(nums[i]);
