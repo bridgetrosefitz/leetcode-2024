@@ -13,16 +13,41 @@ function getCellCoords(cellNumber, matrix) {
 }
 
 var snakesAndLadders = function (board) {
-  // min
-  // array to memoise min rolls for each square, filled with Infinity
-  // q
-  // put [0,0] in q
-  // for i, between 0 - 5
-  // get cell value from adding i
-  // if cell value is row 0, col length[0] - 1, update min steps with 1
-  // min steps = min of steps + 1 and current value in memo
-  // while value in cell is not -1
-  // get new cell value from cell
-  // min steps = min of steps + 1 and current value in memo
-  // return min
+  const length = board.length;
+  const boardCopy = [...board].reverse();
+
+  function intToPos(square) {
+    const row = Math.floor((square - 1) / length);
+    let col = (square - 1) % length;
+    if (row % 2) {
+      col = length - 1 - col;
+    }
+    return [row, col];
+  }
+
+  const q = [[1, 0]]; // [square, moves]
+
+  const visited = new Set();
+
+  while (q.length) {
+    const [square, moves] = q.shift();
+
+    for (let i = 0; i <= 6; i++) {
+      let nextSquare = square + i;
+      const [row, col] = intToPos(nextSquare);
+
+      if (boardCopy[row][col] !== -1) {
+        nextSquare = boardCopy[row][col];
+      }
+
+      if (nextSquare == length * length) return moves + 1;
+
+      if (!visited.has(nextSquare)) {
+        visited.add(nextSquare);
+        q.push([nextSquare, moves + 1]);
+      }
+    }
+
+    return -1;
+  }
 };
