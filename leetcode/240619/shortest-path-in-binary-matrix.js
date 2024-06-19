@@ -1,60 +1,47 @@
 /**
- * @param {character[][]} maze
- * @param {number[]} entrance
+ * @param {number[][]} grid
  * @return {number}
  */
-
-const encode = (row, col) => `${row}-${col}`;
-
-var nearestExit = function (maze, entrance) {
+var shortestPathBinaryMatrix = function (grid) {
+  const q = [];
   const dirs = [
-    [1, 0],
-    [0, 1],
+    [-1, -1],
     [-1, 0],
+    [-1, 1],
+    [0, 1],
+    [1, 1],
+    [1, 0],
+    [1, -1],
     [0, -1],
   ];
-  const q = [entrance];
   const visited = new Set();
-  let steps = 0;
+  const targetRow = grid.length - 1;
+  const targetCol = grid[0].length - 1;
 
-  while (q.length > 0) {
-    const length = q.length;
-    for (let i = 0; i < length; i++) {
-      const [row, col] = q.shift();
-      const pos = `${row},${col}`;
-      if (visited.has(pos)) continue;
-      visited.add(pos);
+  if (grid[0][0] !== 0) return -1;
+  q.push([0, 0, 1]);
 
+  while (q.length) {
+    const [currRow, currCol, currLength] = q.shift();
+
+    if (currRow === targetRow && currCol === targetCol) return currLength;
+
+    visited.add(`${currRow}-${currCol}`);
+
+    for (const [dR, dC] of dirs) {
+      const newRow = currRow + dR;
+      const newCol = currCol + dC;
       if (
-        (row === 0 ||
-          col === 0 ||
-          row === maze.length - 1 ||
-          col === maze[0].length - 1) &&
-        !(row === entrance[0] && col === entrance[1])
-      ) {
-        return steps;
-      }
-
-      for (const [dR, dC] of dirs) {
-        const newRow = row + dR;
-        const newCol = col + dC;
-
-        if (
-          newRow < 0 ||
-          newCol < 0 ||
-          newRow >= maze.length ||
-          newCol >= maze[0].length
-        )
-          continue;
-        const newPos = `${newRow},${newCol}`;
-        if (visited.has(newPos)) continue;
-        if (maze[newRow][newCol] === "+") continue;
-
-        q.push([newRow, newCol]);
-      }
+        newRow < 0 ||
+        newCol < 0 ||
+        newRow >= grid.length ||
+        newCol >= grid[0].length
+      )
+        continue;
+      if (visited.has(`${newRow}-${newCol}`)) continue;
+      if (grid[newRow][newCol] === 1) continue;
+      q.push([newRow, newCol, currLength + 1]);
     }
-
-    steps++;
   }
 
   return -1;
