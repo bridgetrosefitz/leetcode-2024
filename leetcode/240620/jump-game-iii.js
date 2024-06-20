@@ -1,10 +1,5 @@
-/**
- * @param {number[]} arr
- * @param {number} start
- * @return {boolean}
- */
+/// BFS
 
-// do this with dfs
 var canReach = function (arr, start) {
   const q = [start];
   const visited = new Set();
@@ -28,4 +23,26 @@ var canReach = function (arr, start) {
   }
 
   return false;
+};
+
+/// DFS
+
+var canReach = function (arr, start) {
+  function dfs(curr, visited = new Set()) {
+    if (curr >= arr.length) return;
+    if (curr < 0) return;
+    if (visited.has(curr)) return;
+
+    if (arr[curr] === 0) return true;
+    visited.add(curr);
+
+    const upper = curr + arr[curr];
+    const lower = curr - arr[curr];
+    if (dfs(upper, visited)) return true;
+    if (dfs(lower, visited)) return true;
+
+    return false;
+  }
+
+  return dfs(start);
 };
