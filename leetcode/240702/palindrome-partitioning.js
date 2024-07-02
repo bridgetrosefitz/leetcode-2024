@@ -17,7 +17,7 @@ var partition = function (s) {
       if (!isValidPalindrome(newSegment)) continue;
 
       temp.push(newSegment);
-      backtrack(i + 1);
+      backtrack(i + newSegment.length);
       temp.pop();
     }
   }
