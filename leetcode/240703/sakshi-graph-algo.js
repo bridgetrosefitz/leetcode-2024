@@ -10,13 +10,18 @@ function isAlpha(ch) {
 
 function resolveExpression(exp, map) {
   let temp = "";
+  const newMap = {};
 
   function dfs(str) {
     for (const ch of str) {
       if (isAlpha(ch)) {
-        temp = temp + ch;
+        return ch;
       } else {
-        dfs(map[ch]);
+        if (newMap[ch]) {
+          return newMap[ch];
+        } else {
+          return dfs(map[ch]);
+        }
       }
     }
   }
