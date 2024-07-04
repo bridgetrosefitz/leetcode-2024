@@ -7,7 +7,7 @@ function hasAtLeastOne(counter) {
   );
 }
 
-function getMinBlocks(requirements, blocks) {
+function getOptimalBlock(requirements, blocks) {
   // move right pointer until we have at least one of each required amenity
   // move left pointer until we have less than one of each amenity (and only update left pointer if we do)
   // return the floor of the middle block
@@ -27,12 +27,11 @@ function getMinBlocks(requirements, blocks) {
       if (blocks[right][requirement]) requirementsCounter[requirement] += 1;
     }
 
-    minRight = right;
-
     while (hasAtLeastOne(requirementsCounter)) {
       const possibleMin = right - left;
       if (possibleMin < min) {
         minLeft = left;
+        minRight = right;
         min = possibleMin;
       }
 
@@ -65,3 +64,15 @@ const blocks2 = [
   {},
   { school: true },
 ];
+
+const blocks3 = [
+  { school: true },
+  {},
+  {},
+  { school: true },
+  { bar: true },
+  {},
+  { school: true },
+];
+
+const requirements3 = ["school", "bar"];
