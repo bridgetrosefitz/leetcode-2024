@@ -44,7 +44,7 @@ function getMinBlocks(requirements, blocks) {
     }
   }
 
-  return Math.floor(min / 2);
+  return Math.floor((minRight - minLeft) / 2);
 }
 
 const blocks1 = [
