@@ -43,7 +43,7 @@ function getOptimalBlock(requirements, blocks) {
     }
   }
 
-  return Math.floor((minRight - minLeft) / 2);
+  return Math.floor((minRight + minLeft) / 2) + 1; // indexed by 1
 }
 
 const blocks1 = [
@@ -54,9 +54,15 @@ const blocks1 = [
   { gym: false, school: true, store: true },
 ];
 
+// | -- | -- | -- | -- |
+// Sc   G    G    Sc   Sc
+//           Sc        St
+// > 4
+
 const requirements1 = ["gym", "school", "store"];
 
 const requirements2 = ["school", "grocery"];
+
 const blocks2 = [
   { restaurant: true, grocery: true },
   { cinema: true },
