@@ -7,12 +7,14 @@ function flexibleLongest(arr, target) {
     total += arr[right];
 
     while (total > target) {
-      total = -arr[left];
+      total -= arr[left];
       left++;
     }
 
     maxLength = Math.max(maxLength, right - left + 1);
   }
+
+  return maxLength;
 }
 
 // we could also use a while loop.
