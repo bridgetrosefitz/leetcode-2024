@@ -12,7 +12,7 @@ function subarraySumShortest(nums, target) {
     windowSum = windowSum + nums[right];
 
     while (windowSum >= target) {
-      length = Math.min(length, right - left + 1);
+      length = Math.min(length, right - left + 1); // window is guaranteed to be valid here
       windowSum = windowSum = nums[left];
       left++;
     }

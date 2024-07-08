@@ -1,4 +1,4 @@
-function slidingWindow(input, windowSize) {
+function fixedSize(input, windowSize) {
   let max = -Infinity;
   let curr = 0;
 
@@ -17,9 +17,3 @@ function slidingWindow(input, windowSize) {
 
   return max;
 }
-
-// windowSize = 2
-
-// L     R
-// 0  1  2  3  4
-// 10 9  8  7  6
