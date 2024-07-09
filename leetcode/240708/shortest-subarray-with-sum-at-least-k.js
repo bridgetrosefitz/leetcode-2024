@@ -47,7 +47,7 @@ var shortestSubarray = function (nums, k) {
 
   // STRATEGY
   // - if el at R is positive and total is negative, reset
-  // >> or even more simply, if total is ever negative, reset
+  // >> or even more simply, if total is ever negative, reset [ THIS IS SAME OUTCOME AS ABOVE, SO WHO CARES]
 
   // move r across each element
   // add to total
