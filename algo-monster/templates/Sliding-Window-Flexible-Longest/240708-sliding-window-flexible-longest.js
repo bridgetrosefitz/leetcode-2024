@@ -6,7 +6,7 @@ function flexibleLongest(arr, target) {
   for (let right = 0; right < arr.length; right++) {
     total += arr[right];
 
-    // ensure we get a valid answer
+    // if we have made our ans invalid, go in the loop to ensure we get a valid answer
     while (total > target) {
       total -= arr[left];
       left++;
