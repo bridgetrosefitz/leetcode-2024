@@ -25,8 +25,6 @@ var searchRange = function (nums, target) {
   // if target is not present in the array (no need to go further)
   if (firstIndex === -1) return [firstIndex, lastIndex];
 
-  // if there is no element greater than target, hmmmmmm
-
   left = 0;
   right = nums.length - 1;
 
@@ -40,6 +38,9 @@ var searchRange = function (nums, target) {
       left = mid + 1;
     }
   }
+
+  // if there is no element greater than target, return last index in array
+  if (lastIndex === -1) return [firstIndex, nums.length - 1];
 
   return [firstIndex, lastIndex - 1];
 };
