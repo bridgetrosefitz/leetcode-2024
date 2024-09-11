@@ -9,6 +9,7 @@ function slidingWindowLongest(arr, target) {
     // if we have made our ans invalid, go in the loop to make it valid again
 
     while (total > target) {
+      // condition here is the INVALID condition, so shorten until valid
       total -= arr[left];
       left++;
     }
