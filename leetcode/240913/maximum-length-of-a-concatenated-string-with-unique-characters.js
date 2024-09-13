@@ -23,31 +23,39 @@ var maxLength = function (arr) {
   // use a for loop instead of a set
 
   let curr = 0;
-  let max = 0;
   const seen = new Set();
 
-  function backtrack(i) {
-    max = Math.max(max, curr);
-    if (i === arr.length - 1) return;
+  function backtrack(i, max) {
+    if (i === arr.length - 1) return max;
+    const str = arr[i];
 
-    for (const ch of arr[i]) {
-      if (seen.has(ch)) return false;
+    // go through every letter, if not valid, return
+    for (const ch of str) {
+      if (seen.has(ch)) {
+        return false;
+      }
+    }
 
+    for (const ch of str) {
       seen.add(ch);
-      curr += 1;
     }
 
-    backtrack(i + 1);
+    curr += str.length;
 
-    for (const ch of arr[i]) {
-      // if(seen.has(ch))
+    backtrack(i + 1, Math.max(max, curr));
+
+    curr -= str.length;
+
+    for (const ch of str) {
+      seen.delete(ch);
     }
 
+    // add to count
     // backtrack
-    // update max
-    // decrement count for letters previously added
+    // remove from count
+
+    // remove from set???
   }
 
-  backtrack(0);
-  return max;
+  return backtrack(0, 0);
 };
