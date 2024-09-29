@@ -3,50 +3,37 @@
  * @return {number[][]}
  */
 var merge = function (intervals) {
-  const res = [];
-  let curr = 0;
-  intervals.sort((a, b) => (a[0] < b[0] ? -1 : 1));
+  // sort intervals
+  // create res variable
 
-  while (curr < intervals.length) {
-    if (curr === intervals.length - 1) {
-      res.push(intervals[curr]);
-      break;
-    }
+  // set prev to be first interval in list
 
-    const [currStart, currEnd] = intervals[curr];
+  // iterate from second interval to end of list
 
-    // while intervals[curr + 1][0] < currEnd
-    // increment curr
-
-    // push [currStart, intervals[curr][1] into res
-
-    while (curr + 1 < intervals.length && intervals[curr + 1][0] <= currEnd) {
-      curr++;
-    }
-
-    res.push([currStart, intervals[curr][1]]);
-
-    // if(currEnd >= nextStart) {
-    //     const end = currEnd > nextEnd ? currEnd : nextEnd
-    //     res.push([currStart, end])
-    //     curr += 2
-    // } else {
-    //     res.push(intervals[curr])
-    //     curr += 1
-    // }
-  }
-
-  // while curr is less than intervals length
-  // if curr is intervals.length, push intervals[curr] into res and break
-  // if end at interval i is bigger than start at interval i + 1
-  // make a new interval from start i to end i + 1
-  // push into res
-  // curr += 2
-  // else
-  // push interval i into res
-  // curr += 1
+  // if start of curr is less than or equal to end of prev
+  // update prev end to be curr end
 
   // return res
+
+  if (!intervals.length) return [];
+
+  intervals.sort((a, b) => (a[0] < b[0] ? -1 : 1));
+  const res = [intervals[0]];
+  let prev = 0;
+  let curr = 1;
+
+  while (curr < intervals.length) {
+    const prevInterval = res[prev];
+    const currInterval = intervals[curr];
+    if (currInterval[0] <= prevInterval[1]) {
+      prevInterval[1] = Math.max(currInterval[1], prevInterval[1]);
+    } else {
+      res.push(currInterval);
+      prev++;
+    }
+
+    curr++;
+  }
 
   return res;
 };
