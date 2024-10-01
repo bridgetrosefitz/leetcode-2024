@@ -4,16 +4,21 @@
  * @return {number[][]}
  */
 var insert = function (intervals, newInterval) {
-  // guard clause for <= 1 length
+  intervals.push(newInterval);
+  intervals.sort((a, b) => (a[0] < b[0] ? -1 : 1));
+  const res = [intervals[0]];
+  let prevInt = 0;
 
-  const res = [];
-  // iterate left to right across intervals
-  // if start of curr is less than start of new, push curr into res
-  // else (if curr equal or greater)
-  // find where merged / new interval should start
-  // if start of new is less than end of prev, start is start of prev
-  // else, start is start of new
-  // find where merged / new interval should end
-  //
-  // update prev
+  for (let currInt = 1; currInt < intervals.length; currInt++) {
+    const curr = intervals[currInt];
+    const prev = res[prevInt];
+    if (curr[0] <= prev[1]) {
+      prev[1] = Math.max(curr[1], prev[1]);
+    } else {
+      res.push(curr);
+      prevInt++;
+    }
+  }
+
+  return res;
 };
