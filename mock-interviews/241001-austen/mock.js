@@ -2,13 +2,13 @@
 Org Chart
 Input: 
 Employee ID, Manager ID, Employee Name
-[8, 8, "Alice"
-2, 8, "Bob"
-3, 2, "Emp3"
-4, 3, "Emp4"
-5, 4, "Emp5"
-6, 3, "Emp6"
-7, 8, "Emp7"]
+[[8, 8, "Alice"],
+[2, 8, "Bob"],
+[3, 2, "Emp3"],
+[4, 3, "Emp4"],
+[5, 4, "Emp5"],
+[6, 3, "Emp6"],
+[7, 8, "Emp7"]]
 
 
 The first problem involves printing a tree that reflects the management hierarchy of the organization.
