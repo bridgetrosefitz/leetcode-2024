@@ -79,6 +79,10 @@ Emp5 >>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Alice shouldn't have a line at Bob's level
+// Direct kids don't have an indent DONE
+// 3 and 6 shouldn't be indented the same as Bob DONE
+// Emp 5 should be indented from Emp 4 DONE
 function printOrgChart(employeeData) {
   let start = null;
   const adj = new Map();
@@ -88,9 +92,13 @@ function printOrgChart(employeeData) {
     // OPTIMIZE THIS TO BE O(1) NOT O(N)
     // Fix this to use actual IDs, not start person being id = 0
     const res = [];
-    for (let i = 0; i < branchId; i++) {
-      if (branches[i] === 1) {
-        res.push("|  ");
+    for (let curr = 0; curr < branchId; curr++) {
+      if (branches[curr] === 1 && curr < branchId - 1) {
+        res.push("|");
+      }
+
+      if (branches[curr] === 2) {
+        res.push(" ");
       }
     }
 
@@ -111,12 +119,31 @@ function printOrgChart(employeeData) {
     mngNeighbors.push(emp[0]);
   }
 
+  console.log(adj);
+  /*
+Alice 
+|_Bob 
+| |_Emp3 
+|   |_Emp4
+|   | |_Emp5
+|   |_Emp6
+|_Emp7
+
+Alice >> Bob, Emp7
+Bob >> Emp3
+Emp3 >> Emp4, Emp6
+Emp4 >> Emp5
+*/
   function dfs(emp, i) {
     console.log(generateTree(i) + adj.get(emp).name);
     branches[i] = 1;
     const neighbors = adj.get(emp).neighbors;
     if (neighbors.length === 0) branches[i] = 2;
     neighbors.forEach((neighbor, neighborIndex) => {
+      // console.log("emp (3)", emp);
+      // console.log("i (2)", i);
+      // console.log("neighbor (4)", neighbor);
+      // console.log("neighborIndex (0)", 0);
       if (neighborIndex === neighbors.length - 1) branches[i] = 2;
       dfs(neighbor, i + 1);
     });
