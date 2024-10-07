@@ -1,19 +1,15 @@
 function isSymmetric(root) {
-  // isSymm if:
-  // left and right children BOTH don't exist
-  // val of left child is same as val of right child
-  // get left subtree isSymm
-  // get right subtree isSymm
+  function helper(node1, node2) {
+    // return true if both are false
+    // return false if only one of node1 and node2 is false
+    // return false if value of node1 is different from value of node2
+    // recurse
 
-  function subtreeIsSymm(node) {
-    if (!node.left && !node.right) return true;
-    if (!node.left || !node.right) return false;
-
-    const left = subtreeIsSymm(node.left);
-    const right = subtreeIsSymm(node.right);
-
-    return left && right;
+    if (!node1 && !node2) return true;
+    if (!node1 || !node2) return false;
+    if (node1.val !== node2.val) return false;
+    return helper(node1.left, node2.right) && helper(node1.right, node2.left);
   }
 
-  subtreeIsSymm(root);
+  return helper(root.left, root.right);
 }
