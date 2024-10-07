@@ -23,6 +23,26 @@ function maxDepth(root) {
   return max;
 }
 
+function maxDepthBottomUp(root) {
+  function traverse(node) {
+    // when we get to a null node, return 0
+    // get value of left tree
+    // get value of right tree
+    // return max of these up to parent
+
+    if (!node) {
+      return 0;
+    }
+
+    const leftMax = traverse(node.left);
+    const rightMax = traverse(node.right);
+
+    return Math.max(leftMax, rightMax) + 1;
+  }
+
+  return traverse(root);
+}
+
 //////////////////
 
 /**
