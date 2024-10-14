@@ -4,7 +4,7 @@ function nextGreaterElement(nums) {
 
   for (let i = nums.length - 1; i >= 0; i--) {
     while (stack.length && stack[stack.length - 1] <= nums[i]) {
-      stack.pop(); // only keep values that are local maximums, i.e. get rid of else smaller than curr el
+      stack.pop(); // only keep values that are local maximums, i.e. get rid of els smaller than curr el
     }
 
     // the next value that is larger than this
