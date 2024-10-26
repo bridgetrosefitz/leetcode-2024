@@ -77,7 +77,7 @@ function printOrgChart(employeeData) {
       start = emp[0];
       continue;
     }
-    const mngNeighbors = adj.get(emp[1].neighbors);
+    const mngNeighbors = adj.get(emp[1]).neighbors;
     mngNeighbors.push(emp[0]);
   }
 
