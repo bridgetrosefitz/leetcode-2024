@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-export function useIsFirstRender(): boolean {
+export function useIsFirstRender() {
   const isFirstRender = useRef(true);
 
   if (isFirstRender.current) {
