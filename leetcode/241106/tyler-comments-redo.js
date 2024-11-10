@@ -43,13 +43,11 @@ function generateCommentTree(comments) {
   // if parent is null, push into roots
   // else grab parent and push curr comment into children array of parent
 
-  console.log(commentsObj);
   comments.forEach(comment => {
     if (comment.parentId === null) {
       roots.push(comment);
     } else {
       const parent = commentsObj[comment.parentId];
-      console.log("parentId", parent.parentId);
       parent.children.push(comment);
     }
   });
