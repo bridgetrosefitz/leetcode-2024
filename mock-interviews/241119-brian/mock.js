@@ -36,7 +36,7 @@ function rightSideValues(root) {
     currNodes.forEach((node, i) => {
       // put last node in res
       if (i === lastIndex) {
-        node.val;
+        res.push(node.val);
       }
 
       if (node.left) {
@@ -50,6 +50,8 @@ function rightSideValues(root) {
 
     currNodes = nextNodes;
   }
+
+  return res;
 }
 
 ///////////////////////////////////////////////////////////////
