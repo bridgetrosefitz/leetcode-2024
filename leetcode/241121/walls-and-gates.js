@@ -75,3 +75,4 @@ var wallsAndGates = function (rooms) {
 
 // should have gone backwards
 // should have talked more about pros and cons -- breadth first iteration
+// wasn't sure before I started
