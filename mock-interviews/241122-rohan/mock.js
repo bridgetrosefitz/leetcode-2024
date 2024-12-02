@@ -59,8 +59,9 @@ function getAllPageIds() {
   let latestId = -Infinity; // to account for potnetially negative ints / hostile inputs
 
   while (mostRecentReturnedIds.length === 100) {
-    latestId = mostRecentReturnedIds[mostRecentReturnedIds.length - 1] || largestId;
+    latestId = mostRecentReturnedIds[mostRecentReturnedIds.length - 1] || latestId;
     mostRecentReturnedIds = getPageIDs([`>${latestId}`]);
+    allPageIds = allPageIds.concat(mostRecentReturnedIds)
   }
 
   return allPageIds;
