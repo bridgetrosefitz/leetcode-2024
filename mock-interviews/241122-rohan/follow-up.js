@@ -56,6 +56,52 @@ function getAllPageIds() {
                                       // [2]
 }
 
+function findAllIds() {
+  // at each node
+  // go through each pair of numbers
+  // if pair is consecutive, continue
+  // else, recursively check on min and max
+  // spread the results into res
+
+  function helper(min, max) {
+    let res = getPageIds([`>${min}`,`<${max}`])
+    //[7]
+    if(res.length < 100) {
+      return res
+    }
+
+    const finalRes = []
+    
+    for(let i = 0; i < res.length - 1; i++) {
+      finalRes.push(res[i])
+
+      if(res[i + 1] - res[i] === 1) {
+        finalRes.push(res[i + 1])
+        continue
+      }
+
+      finalRes = finalRes.concat(helper(res[i], res[i + 1]))
+    } 
+    
+    return finalRes
+  }
+
+  
+  // call getIds once then loop over results and call helper. return the results
+  const res = helper(-Infinity, Infinity)
+   // [1,5,10,55, 10285, 1100]
+
+  return res
+
+  // TAKE CARE OF KNOWING WHERE WE HAVE EXAUSTED TO -INFINITY AND INFINITY
+}
+
+
+
+
+
+
+
 /*
 
 [0,10]

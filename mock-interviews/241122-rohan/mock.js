@@ -32,25 +32,25 @@ store IDs we get back
 criteria for stopping
 */
 
-function getAllPageIds() {
-  let allPageIds = [];
-  let mostRecentReturnedIds = [];
-  let latestId = 0;
+// function getAllPageIds() {
+//   let allPageIds = [];
+//   let mostRecentReturnedIds = [];
+//   let latestId = 0;
 
-  // TO DO: pass in latest ID with filter
-  mostRecentReturnedIds = getPageIDs();
+//   // TO DO: pass in latest ID with filter
+//   mostRecentReturnedIds = getPageIDs();
 
-  while (mostRecentReturnedIds.length === 100) {
-    allPageIds = [...allPageIds, ...mostRecentReturnedIds];
-    latestId =
-      mostRecentReturnedIds.length === 0 ? mostRecentReturnedIds : 
-      mostRecentReturnedIds[mostRecentReturnedIds.length - 1];
-    const filter = `>${latestId}`;
-    mostRecentReturnedIds = getPageIDs(filter);
-  }
+//   while (mostRecentReturnedIds.length === 100) {
+//     allPageIds = [...allPageIds, ...mostRecentReturnedIds];
+//     latestId =
+//       mostRecentReturnedIds.length === 0 ? mostRecentReturnedIds : 
+//       mostRecentReturnedIds[mostRecentReturnedIds.length - 1];
+//     const filter = `>${latestId}`;
+//     mostRecentReturnedIds = getPageIDs(filter);
+//   }
 
-  return allPageIds.length === 0 ? mostRecentReturnedIds : allPageIds
-}
+//   return allPageIds.length === 0 ? mostRecentReturnedIds : allPageIds
+// }
 
 function getAllPageIds() {
   let allPageIds = [];
