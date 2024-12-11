@@ -31,6 +31,15 @@ class Heap {
   }
 }
 
+// [3,0,1,0,1,0,3,3,3], k = 2
+
+const heapRefs = {
+  3: [3, 1],
+  0: [0, 2],
+}[(3, 1)][(0, 2)];
+
+// every balance operation is O(log(k))
+
 var topKFrequent = function (nums, k) {
   const minHeap = new Heap();
 
@@ -39,6 +48,7 @@ var topKFrequent = function (nums, k) {
   for (let i = 0; i < nums.length; i++) {
     const num = nums[i];
     const isNewVal = !counts.hasOwnProperty(num);
+
     if (isNewVal) {
       counts[num] = [num, 1];
       if (minHeap.getSize() >= k) {
