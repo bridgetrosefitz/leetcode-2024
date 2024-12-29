@@ -18,7 +18,7 @@ function debounce2(cb, delay = 1000) {
   timeout2 = setTimeout(cb, delay);
 }
 // how to use:
-debounce(() => console.log("hi"), 500);
+debounce2(() => console.log("hi"), 500);
 
 // using a closure
 
@@ -78,7 +78,7 @@ const instanceDebounceMaker4 = debounceMaker4(thing => console.log(thing), 500);
 instanceDebounceMaker4("thing i want to log");
 
 // how to use with multiple args in the callback function:
-const instance2DebounceMaker4 = debonceMaker4(
+const instance2DebounceMaker4 = debounceMaker4(
   (...shitTonneOfArgs) => console.log(...shitTonneOfArgs),
   500
 );
