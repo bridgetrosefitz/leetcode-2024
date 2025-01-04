@@ -4,12 +4,13 @@
 
                     1
                   2   3
-                4  n n  n
-              n n n n n n n n
+                4  5 n  n
+              6 7 n n n n n n
 
                   [2,3]
                   [2]
                   [4]
+                  [6,7]
 
                   tests = [
                     [[1,2,3], []],
@@ -52,3 +53,37 @@ function valsAtLastLevel(root) {
     }
   }
 }
+
+// ===============
+// BFS 2
+
+function valsAtLastLevel2(root) {
+  if (!root) return [];
+
+  let q = [root];
+
+  while (q.length) {
+    const nodesAtCurrentLevel = q.length;
+
+    for (let i = 0; i < nodesAtCurrentLevel; i++) {
+      const curr = q[i];
+
+      if (curr.left) {
+        q.push(curr.left);
+      }
+
+      if (curr.right) {
+        q.push(curr.right);
+      }
+    }
+
+    if (q.length === nodesAtCurrentLevel) {
+      return q.map(node => node.val);
+    } else {
+      q = q.slice(nodesAtCurrentLevel);
+    }
+  }
+}
+
+// =================
+// DFS
