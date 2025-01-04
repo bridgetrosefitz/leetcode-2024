@@ -87,3 +87,42 @@ function valsAtLastLevel2(root) {
 
 // =================
 // DFS
+
+function dfsShiz(root) {
+  if (!root) {
+    return [];
+  }
+
+  const res = [];
+  let maxLevel = 0;
+
+  function getLowestLevel(node, currLevel) {
+    if (!node) {
+      return;
+    }
+
+    maxLevel = Math.max(maxLevel, currLevel);
+    getLowestLevel(node.left, currLevel + 1);
+    getLowestLevel(node.right, currLevel + 1);
+  }
+
+  // can I do this without external variable
+
+  function getNodes(node, currLevel) {
+    if (!node) {
+      return;
+    }
+
+    if (currLevel === maxLevel) {
+      res.push(node.val);
+    }
+
+    getNodes(node.left, currLevel + 1);
+    getNodes(node.right, currLevel + 1);
+  }
+
+  getLowestLevel(root, 0);
+  getNodes(root, 0);
+
+  return res;
+}
