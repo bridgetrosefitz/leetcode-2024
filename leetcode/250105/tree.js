@@ -94,21 +94,33 @@ function dfsShiz(root) {
   }
 
   const res = [];
-  let maxLevel = 0;
+  // let maxLevel = 0;
+
+  /*
+  
+                    1
+                  2   3
+                4  5 n  n
+              6 7 n n n n n n
+  
+  */
 
   function getLowestLevel(node, currLevel) {
     if (!node) {
-      return;
+      return currLevel - 1;
     }
 
-    maxLevel = Math.max(maxLevel, currLevel);
-    getLowestLevel(node.left, currLevel + 1);
-    getLowestLevel(node.right, currLevel + 1);
+    // can I do this by checking for leaf ... in that case, what does my !node check look like for null children other than leaves
+
+    return Math.max(
+      getLowestLevel(node.left, currLevel + 1),
+      getLowestLevel(node.left, currLevel + 1)
+    );
   }
 
   // can I do this without external variable
 
-  function getNodes(node, currLevel) {
+  function getNodes(node, currLevel, maxLevel) {
     if (!node) {
       return;
     }
@@ -117,12 +129,12 @@ function dfsShiz(root) {
       res.push(node.val);
     }
 
-    getNodes(node.left, currLevel + 1);
-    getNodes(node.right, currLevel + 1);
+    getNodes(node.left, currLevel + 1, maxLevel);
+    getNodes(node.right, currLevel + 1, maxLevel);
   }
 
-  getLowestLevel(root, 0);
-  getNodes(root, 0);
+  const max = getLowestLevel(root, 0);
+  getNodes(root, 0, max);
 
   return res;
 }
