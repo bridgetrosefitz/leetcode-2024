@@ -1,7 +1,7 @@
 function knapsack(weights, values, cap) {
-    // your code goes here
+  // your code goes here
 
-    /*
+  /*
     Inputs:
     - type, number, hostile
     - array 1 (weights) - int[]
@@ -25,27 +25,24 @@ function knapsack(weights, values, cap) {
     
     */
 
-    let maxValue = -Infinity // 10
-    let currWeight = 0 // 0 > 4 > 6 > 2
-    let currValue = 0 // 0 > 10 > 30 > 20
+  let maxValue = -Infinity; // 10
+  let currWeight = 0; // 0 > 4 > 6 > 2
+  let currValue = 0; // 0 > 10 > 30 > 20
 
-    // SUBSEQUENCES - pick and not pick
+  // SUBSEQUENCES - pick and not pick
 
-    for(let i = 0; i < weights.length; i++) { // 1
-        for(let j = i; j < weights.length; j++) {
-            currWeight += weights[j] // 2
-            currValue += values[j] // 20
-            if(currWeight <= cap) {
-                maxValue = Math.max(maxValue, currValue)
-            } else {
-                currWeight = 0
-                currValue = 0
-                break
-            }
-        }
+  for (let i = 0; i < weights.length; i++) {
+    // 1
+    for (let j = i; j < weights.length; j++) {
+      if (currWeight + weights[i] > cap) {
+        continue;
+      } else {
+        maxValue = Math.max(maxValue, currValue);
+      }
     }
+  }
 
-    return maxValue
+  return maxValue;
 }
 
 // debug your code below
