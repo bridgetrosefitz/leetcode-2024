@@ -97,3 +97,12 @@ Please implement a function to override a check for a given id and then re-print
 > > overriding children
 > > parent status is derived from children; therefore, if you override a child it will most likely need to override parent
 > > parent status is most restrictive of its children
+
+APPROACH
+
+function overrideCheck(checkId, newStatus) {
+// find the check and update its status
+// need to know which of each status are present on each check
+// need to select which status based on most restrictive
+// need to override the parent
+}
