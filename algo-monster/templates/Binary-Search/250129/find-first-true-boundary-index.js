@@ -1,0 +1,18 @@
+function findBoundary(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+  let boundaryIndex = -1;
+
+  while (left <= right) {
+    const mid = Math.floor(left + (right - left) / 2);
+
+    if (arr[mid]) {
+      boundaryIndex = mid;
+      right = mid - 1;
+    } else {
+      left = mid + 1;
+    }
+  }
+
+  return boundaryIndex;
+}
