@@ -1,3 +1,7 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
 var continuousSubarrays = function (nums) {
   let left = 0; // 1
   let right = 0; // 3
@@ -21,13 +25,7 @@ var continuousSubarrays = function (nums) {
 
     if (diff > 2) {
       const windowLength = right - left;
-      console.log("left", left);
-      console.log("right", right);
-      console.log(
-        "(windowLength * windowLength + 1) / 2",
-        (windowLength * windowLength + 1) / 2
-      );
-      count += (windowLength * windowLength + 1) / 2;
+      count += windowLength + 1;
       left = right;
       max = nums[right];
       min = nums[right];
