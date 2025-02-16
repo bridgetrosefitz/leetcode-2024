@@ -27,18 +27,23 @@ var pacificAtlantic = function (heights) {
 
   // populate initial canReach
 
-  for (let i = 0; i < heights.length; i++) {
+  for (let i = 0; i < heights[0].length; i++) {
     canReach.pac.add(`${0}-${i}`);
     canReach.atl.add(`${heights.length - 1}-${i}`);
   }
 
-  for (let i = 0; i < heights[0].length; i++) {
+  for (let i = 0; i < heights.length; i++) {
     canReach.pac.add(`${i}-${0}`);
     canReach.atl.add(`${i}-${heights[0].length - 1}`);
   }
 
   // traverse from initial canReach
 
+  // 1 1
+  // 1 1
+  // 1 1
+
+  // canReachPac = {0-0, 0-1, 1-0, 2-0} canReachAtl = {2-0,2-1,0-1,1-1}
   function traverse(r, c, ocean) {
     canReach[ocean].add(`${r}-${c}`);
 
