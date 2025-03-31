@@ -1,0 +1,25 @@
+:root {
+  --progress-bar-height: 15px;
+}
+
+.progress-bar {
+  height: var(--progress-bar-height);
+  display: inline-block;
+}
+
+.dynamic-bar {
+  background-color: steelblue;
+}
+
+.background-bar {
+  background-color: gainsboro;
+}
+
+button {
+  margin: 1rem;
+}
+
+#bars-container {
+  display: flex;
+  flex-direction: column;
+}
