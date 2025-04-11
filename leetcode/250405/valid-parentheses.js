@@ -22,29 +22,29 @@ function isValid(s) {
   return closing.length === 0;
 }
 
-const tests = [
-  ["()", true],
-  ["())", false],
-  ["(()", false],
-  ["(", false],
-  [")", false],
-  ["({})", true],
-  ["(){}", true],
-  ["{[]}()", true],
-];
+// const tests = [
+//   ["()", true],
+//   ["())", false],
+//   ["(()", false],
+//   ["(", false],
+//   [")", false],
+//   ["({})", true],
+//   ["(){}", true],
+//   ["{[]}()", true],
+// ];
 
-for (const [input, expected] of tests) {
-  let res = isValid(input);
-  if (res !== expected) {
-    console.log(
-      `FAILED - input ${JSON.stringify(
-        input
-      )}, expected ${expected}, actual ${res}`
-    );
-  } else {
-    console.log(`PASSED - ${JSON.stringify(input)}`);
-  }
-}
+// for (const [input, expected] of tests) {
+//   let res = isValid(input);
+//   if (res !== expected) {
+//     console.log(
+//       `FAILED - input ${JSON.stringify(
+//         input
+//       )}, expected ${expected}, actual ${res}`
+//     );
+//   } else {
+//     console.log(`PASSED - ${JSON.stringify(input)}`);
+//   }
+// }
 
 // "()", true
 // "())", false
@@ -54,3 +54,28 @@ for (const [input, expected] of tests) {
 // "({})", true
 // "(){}", true
 // "{[]}()", true
+
+/////////////////////////////////////////////////////////
+
+// "(", false
+// "()", true
+// "()(", false
+[
+  // ")((", false
+];
+
+const tests2 = [
+  ["(", false],
+  ["()", true],
+  ["()(", false],
+  [")((", false],
+];
+
+for (const [input, expected] of tests2) {
+  const res = isValid(input);
+  if (res !== expected) {
+    console.log(`FAILED - inout ${input}, expected ${expected}, actual ${res}`);
+  } else {
+    console.log(`PASSED`);
+  }
+}
