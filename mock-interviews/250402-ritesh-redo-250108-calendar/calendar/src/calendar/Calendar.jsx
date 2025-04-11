@@ -1,13 +1,12 @@
 import { useState } from "react";
 import Month from "./Month";
+import { today } from "./calendarConstants";
 
 const MONTH_DIRECTION = {
   TODAY: 0,
   BACKWARD: -1,
   FORWARD: 1,
 };
-
-const today = new Date();
 
 const Calendar = () => {
   const [monthYear, setMonthYear] = useState([
