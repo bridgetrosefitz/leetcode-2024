@@ -7,27 +7,18 @@ const example = ["app", "apple", "apples", "car", "cars", "dog"];
 // check if one is prefix of other, and vice versa
 
 function generatePrefixPairs(list) {
-  function getPrefixPair(word1, word2) {
-    const shorterWord = word1.length < word2.length ? word1 : word2;
-    const largerWord = shorterWord === word1 ? word2 : word1;
-
-    const prefixOverlap = largerWord.slice(0, shorterWord.length);
-
-    if (shorterWord === prefixOverlap) {
-      return [shorterWord, largerWord];
-    }
-
-    return undefined;
-  }
+  const copy = [...list].sort();
 
   const res = [];
 
-  for (let i = 0; i < list.length - 1; i++) {
-    for (let j = i + 1; j < list.length; j++) {
-      const prefixPair = getPrefixPair(list[i], list[j]);
-      if (prefixPair) {
-        res.push(prefixPair);
+  for (let i = 0; i < copy.length - 1; i++) {
+    for (let j = i + 1; j < copy.length; j++) {
+      const shorter = copy[i];
+      const longer = copy[j];
+      if (!longer.startsWith(shorter)) {
+        break;
       }
+      res.push([shorter, longer]);
     }
   }
 
