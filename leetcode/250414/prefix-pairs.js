@@ -1,6 +1,6 @@
 const example = ["app", "apple", "apples", "car", "cars", "dog"];
-i;
-j;
+// i;
+// j;
 
 // for each word
 // for each other word
@@ -8,12 +8,13 @@ j;
 
 function generatePrefixPairs(list) {
   function getPrefixPair(word1, word2) {
-    if (word1.indexOf(word2) === 0) {
-      return [word2, word1];
-    }
+    const shorterWord = word1.length < word2.length ? word1 : word2;
+    const largerWord = shorterWord === word1 ? word2 : word1;
 
-    if (word2.indexOf(word1) === 0) {
-      return [word1, word2];
+    const prefixOverlap = largerWord.slice(0, shorterWord.length);
+
+    if (shorterWord === prefixOverlap) {
+      return [shorterWord, largerWord];
     }
 
     return undefined;
