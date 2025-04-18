@@ -1,4 +1,4 @@
-import { months, days as daysInWeek } from "./calendarConstants";
+import { months, days as daysInWeek, today } from "./calendarConstants";
 import Day from "./Day";
 
 const getNumberOfDaysInMonth = (monthIndex, year) => {
@@ -17,8 +17,15 @@ const Month = ({ monthYear: [month, year] }) => {
     (_, i) => (i < dayOfFirstOfMonth ? null : i - dayOfFirstOfMonth + 1)
   );
 
+  const isCurrentMonth =
+    month === today.getMonth() && year === today.getFullYear();
+
   const dayComponents = monthGridCells.map((date, i) => (
-    <Day key={date === null ? "null" + i : date} date={date} />
+    <Day
+      key={date === null ? "null" + i : date}
+      date={date}
+      isHighlighted={isCurrentMonth && date === today.getDate()}
+    />
   ));
 
   return (
@@ -26,7 +33,13 @@ const Month = ({ monthYear: [month, year] }) => {
       <div>
         {months[month]} {year}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(7, 2.5em)",
+          gridTemplateRows: "auto repeat(5, 2.5em",
+        }}
+      >
         {daysInWeek.map(day => (
           <span key={day} style={{ fontWeight: "bold" }}>
             {day.slice(0, 3)}

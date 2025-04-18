@@ -1,7 +1,7 @@
 import Month from "./Month";
+import CalendarButtons from "./CalendarButtons";
 import { useState } from "react";
 import { today } from "./calendarConstants";
-import CalendarButtons from "./CalendarButtons";
 
 const MONTH_DIRECTION = {
   TODAY: 0,
@@ -62,9 +62,19 @@ const Calendar = () => {
 
   return (
     <>
-      <button onClick={test}>BATCHING TEST - COUNT</button>
-      <CalendarButtons handleClick={handleChangeMonth} />
+      <div
+        style={{
+          margin: "1rem",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <CalendarButtons handleClick={handleChangeMonth} />
+      </div>
       <Month monthYear={monthYear} />
+      <button style={{ margin: "1rem" }} onClick={test}>
+        BATCHING TEST - COUNT
+      </button>
     </>
   );
 };
