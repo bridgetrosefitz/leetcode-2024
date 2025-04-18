@@ -1,0 +1,26 @@
+#calendar-buttons-container {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#test-button {
+  margin: 1rem;
+}
+
+.calendar-day {
+  align-content: center;
+}
+
+.highlighted-day {
+  margin: 0.2rem;
+  background: lightgray;
+  border-radius: 50%;
+  color: black;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 2.5em);
+  grid-template-rows: auto repeat(5, 2.5em);
+}

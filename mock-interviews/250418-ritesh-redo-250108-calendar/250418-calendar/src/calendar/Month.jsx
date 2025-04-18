@@ -33,13 +33,7 @@ const Month = ({ monthYear: [month, year] }) => {
       <div>
         {months[month]} {year}
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(7, 2.5em)",
-          gridTemplateRows: "auto repeat(5, 2.5em",
-        }}
-      >
+      <div className="calendar-grid">
         {daysInWeek.map(day => (
           <span key={day} style={{ fontWeight: "bold" }}>
             {day.slice(0, 3)}

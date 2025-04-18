@@ -2,6 +2,7 @@ import Month from "./Month";
 import CalendarButtons from "./CalendarButtons";
 import { useState } from "react";
 import { today } from "./calendarConstants";
+import "./calendarStyles.css";
 
 const MONTH_DIRECTION = {
   TODAY: 0,
@@ -62,17 +63,11 @@ const Calendar = () => {
 
   return (
     <>
-      <div
-        style={{
-          margin: "1rem",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div id="calendar-buttons-container">
         <CalendarButtons handleClick={handleChangeMonth} />
       </div>
       <Month monthYear={monthYear} />
-      <button style={{ margin: "1rem" }} onClick={test}>
+      <button id="test-button" onClick={test}>
         BATCHING TEST - COUNT
       </button>
     </>
