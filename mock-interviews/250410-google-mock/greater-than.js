@@ -9,6 +9,19 @@ function isValid(nums) {
     ["b", "d"],
   ],
 
+  {
+    a: [b,d]
+    b: [d]
+    d: []
+
+  }
+
+  a > b > d >> TRUE
+
+            A
+          /  \
+         B ->  D
+
   */
   const adj = {};
 
@@ -48,11 +61,20 @@ function isValid(nums) {
       }
     }
 
-    // when we come back from checking dfs on all a node's neighbors, remove it from visited (because you or your neighbors can no longer possibly point back to another visited node)
+    // when we come back from running dfs on all a node's neighbors,
+    // remove it from visited (because you or your neighbors can no longer possibly point back to another previously visited node)
     visited.delete(node);
+
+    // in my brain I struggled to see for a sec that this WASNT a cycle
+
+    // CYCLE = follow arrows and you end up back where you were
+    // THEREFORE, to know that you're not back where you were (aka no cycles in a particular path), you run out of arrows / your DFS ends, aka when you've finished visitng all your neighbors
+    // visited set is like a path- keeping track of all the steps you've been along on that path
 
     return true;
   }
+
+  ///////////////////
 
   for (const node of Object.keys(adj)) {
     // clear visited

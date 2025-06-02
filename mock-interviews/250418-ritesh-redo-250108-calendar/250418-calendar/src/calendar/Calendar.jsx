@@ -1,14 +1,8 @@
 import Month from "./Month";
 import CalendarButtons from "./CalendarButtons";
 import { useState } from "react";
-import { today } from "./calendarConstants";
+import { today, MONTH_DIRECTION } from "./calendarConstants";
 import "./calendarStyles.css";
-
-const MONTH_DIRECTION = {
-  TODAY: 0,
-  BACKWARD: -1,
-  FORWARD: 1,
-};
 
 const Calendar = () => {
   const [monthYear, setMonthYear] = useState([
@@ -64,7 +58,7 @@ const Calendar = () => {
   return (
     <>
       <div id="calendar-buttons-container">
-        <CalendarButtons handleClick={handleChangeMonth} />
+        <CalendarButtons onMonthChange={handleChangeMonth} />
       </div>
       <Month monthYear={monthYear} />
       <button id="test-button" onClick={test}>

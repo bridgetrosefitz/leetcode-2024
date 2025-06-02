@@ -1,0 +1,21 @@
+function flexibleLongest(arr, target) {
+  let total = 0;
+  let max = 0;
+  let left = 0;
+
+  for (let right = 0; right < arr.length; right++) {
+    total += arr[right];
+
+    // if we've exceeded target, delete things from left
+    while (total > target) {
+      total -= arr[left];
+      left++;
+    }
+
+    // once we're past the check we know we're sweet!
+
+    max = Math.max(max, right - left + 1);
+  }
+
+  return max;
+}

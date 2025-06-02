@@ -85,7 +85,11 @@ const Carousel = () => {
   const AUTO_PROGRESS_AFTER = 3000;
 
   useEffect(() => {
-    autoProgress();
+    const interval = autoProgress();
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   useEffect(() => {
@@ -94,13 +98,15 @@ const Carousel = () => {
 
   function autoProgress() {
     clearInterval(intervalRef.current);
-    // const counter = counterRef.current;
-    // counterRef.current += 1;
-
-    intervalRef.current = setInterval(() => {
+    const interval = setInterval(() => {
       // console.log("interval ", counter);
       handleChangePhoto("increment");
     }, AUTO_PROGRESS_AFTER);
+
+    return interval;
+
+    // const counter = counterRef.current;
+    // counterRef.current += 1;
   }
 
   function handleChangePhoto(navOption) {

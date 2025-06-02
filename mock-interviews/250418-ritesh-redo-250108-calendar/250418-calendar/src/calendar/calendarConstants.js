@@ -24,3 +24,9 @@ export const days = [
 ];
 
 export const today = new Date();
+
+export const MONTH_DIRECTION = {
+  TODAY: 0,
+  BACKWARD: -1,
+  FORWARD: 1,
+};

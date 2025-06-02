@@ -16,8 +16,6 @@ const Month = ({ monthYear: [month, year] }) => {
     (_, i) => (i < dayOfFirstOfMonth ? null : i - dayOfFirstOfMonth + 1)
   );
 
-  console.log("monthGridCells", monthGridCells);
-
   // S M T W T F S
   //             1
   // 2 3 4 5 6 7 8

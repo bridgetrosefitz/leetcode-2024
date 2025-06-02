@@ -8,6 +8,7 @@ const React = () => {
     // if nothing there, set it to initialValue
     // return value and setter
     const localIndex = stateNextIndex;
+    stateNextIndex += 1;
 
     if (state[localIndex] === undefined) {
       state[localIndex] = initialValue;

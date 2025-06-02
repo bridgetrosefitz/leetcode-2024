@@ -1,9 +1,9 @@
-const CalendarButtons = ({ handleClick }) => {
+const CalendarButtons = ({ onMonthChange }) => {
   return (
     <>
-      <button onClick={() => handleClick("BACKWARD")}>{"<"}</button>
-      <button onClick={() => handleClick("TODAY")}>TODAY</button>
-      <button onClick={() => handleClick("FORWARD")}>{">"}</button>
+      <button onClick={() => onMonthChange("BACKWARD")}>{"<"}</button>
+      <button onClick={() => onMonthChange("TODAY")}>TODAY</button>
+      <button onClick={() => onMonthChange("FORWARD")}>{">"}</button>
     </>
   );
 };
