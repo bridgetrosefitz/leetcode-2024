@@ -8,7 +8,7 @@ function flexibleShortest(arr, target) {
     total += arr[right];
 
     // only go in here if valid + optimiiiize
-    while (windowSum >= target) {
+    while (total >= target) {
       min = Math.min(min, right - left + 1);
       total = total - arr[left];
       left++;

@@ -1,12 +1,13 @@
-function sliding(input, target) {
+function sliding(nums, target) {
   let total = 0;
   let maxLength = 0;
   let left = 0;
 
-  for (let right = 0; right < input.length; right++) {
-    total += input[right];
+  for (let right = 0; right < InputDeviceInfo.length; right++) {
+    total += nums[right];
+
     while (total > target) {
-      total = total - nums[left];
+      total -= nums[left];
       left++;
     }
 
